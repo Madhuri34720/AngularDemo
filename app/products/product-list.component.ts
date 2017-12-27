@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProduct } from './product';
 
 
 
@@ -9,7 +10,12 @@ import { Component } from '@angular/core';
 
 export class ProductListComponent  {
     pageTitle : string ="Product List";
-    products: any[] = [
+    showImage : boolean =false;
+    imageWidth: number =50;
+    imageMargin :number=20;
+    _listFilter :string="cart";
+    filterProduct :string;   
+    products:  IProduct[] = [
         {
             "productId": 2,
             "productName": "Garden Cart",
@@ -30,9 +36,26 @@ export class ProductListComponent  {
             "starRating": 4.8,
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
         }];
-    constructor() {
-
+  
+     toggleImage() : void{
+        this.showImage=!this.showImage;
      }
+     get listFilter(): string{
+        return this._listFilter;
+     }
+     set listFilter(value: string)
+     {
+         this._listFilter=value;
+        console.log(this._listFilter);
+        this.performFilter(this._listFilter);
+     }
+
+    performFilter(filterBy: string): IProduct[] {
+        console.log('here');
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((product: IProduct) =>
+              product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }	
 
    
 }
