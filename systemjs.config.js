@@ -24,6 +24,10 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+      'tslib': 'npm:tslib/tslib.js',
+      '@angular/common/http': 
+      'npm:@angular/common/bundles/common-http.umd.js',
+	
       // other libraries
       'rxjs':                       'npm:rxjs',
     },
