@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 
 
@@ -13,29 +14,9 @@ export class ProductListComponent  {
     showImage : boolean =false;
     imageWidth: number =50;
     imageMargin :number=20;
-    _listFilter :string="cart";
-    filterProduct :string;   
-    products:  IProduct[] = [
-        {
-            "productId": 2,
-            "productName": "Garden Cart",
-            "productCode": "GDN-0023",
-            "releaseDate": "March 18, 2016",
-            "description": "15 gallon capacity rolling garden cart",
-            "price": 32.99,
-            "starRating": 4.2,
-            "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
-        },
-        {
-            "productId": 5,
-            "productName": "Hammer",
-            "productCode": "TBX-0048",
-            "releaseDate": "May 21, 2016",
-            "description": "Curved claw steel hammer",
-            "price": 8.9,
-            "starRating": 4.8,
-            "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-        }];
+    _listFilter :string="Search";
+    filterProduct :IProduct[];   
+   
   
      toggleImage() : void{
         this.showImage=!this.showImage;
@@ -47,7 +28,7 @@ export class ProductListComponent  {
      {
          this._listFilter=value;
         console.log(this._listFilter);
-        this.performFilter(this._listFilter);
+        this.filterProduct=this.performFilter(this._listFilter);
      }
 
     performFilter(filterBy: string): IProduct[] {
@@ -56,6 +37,11 @@ export class ProductListComponent  {
         return this.products.filter((product: IProduct) =>
               product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }	
-
+    constructor(private _productservice : ProductService){
+       this.filterProduct=this.products;    
+      
+       //this.filterProduct=this.performFilter(this._listFilter);
+    }
+    products:  IProduct[]=this._productservice.getProducts();
    
 }
