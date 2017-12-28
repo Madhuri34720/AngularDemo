@@ -6,7 +6,7 @@ import { error } from 'util';
 
 
 @Component({
-    selector: 'product-list',
+  
     templateUrl: './app/products/product-list.component.html'
 })
 

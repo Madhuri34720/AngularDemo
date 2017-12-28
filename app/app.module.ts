@@ -7,10 +7,20 @@ import {ProductListComponent} from './products/product-list.component';
 import {RatingComponent} from './rating/rating-component'
 import { ProductService } from './products/product.service';
 import { HttpClientModule } from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+  import { from } from 'rxjs/observable/from';
 @NgModule({
-    imports:      [ BrowserModule,FormsModule ,HttpClientModule ],
+    imports:      [ BrowserModule,FormsModule ,HttpClientModule, 
+      RouterModule.forRoot([
+        { path: 'products', component: ProductListComponent},
+      //  { path: 'products/:id', component: ProductDetailComponent},
+        //{ path: 'welcome', component: WelcomeComponent},
+        { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+        { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+        ])
+       ],
     declarations: [AppComponent,ProductListComponent,RatingComponent ],
-    bootstrap:    [  AppComponent,ProductListComponent],
+    bootstrap:    [  AppComponent],
     providers:[ProductService]
   })
 
