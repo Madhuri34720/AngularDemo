@@ -43,9 +43,8 @@
                         <td>{{product.productName}}</td>
                         <td >{{product.productCode}}</td>
                         <td>{{product.description}}</td>
-                        <td>{{product.price}}</td>
-                        <td>{{product.starRating}}</td>
-                       <!-- <td><rating-star></rating-star></td> -->
+                        <td>{{product.price}}</td>                        
+                        <td><rating-star [rating]='product.starRating'></rating-star></td> 
                     </tr>
                 </tbody>
             </table>
