@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `<div class="header">
             <ul class="nav">
-            <li><a  [routerLink]="['/']">Home</a> </li>
+            <li><a  [routerLink]="['/welcome']">Home</a> </li>
             <li><a  [routerLink]="['/products']">Product List</a> </li>
             </ul>
             </div>
